@@ -3,3 +3,4 @@ obj/
 dist/
 test-results/
 recovery/
+artifacts/

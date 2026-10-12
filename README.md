@@ -31,6 +31,18 @@ The app, window, tray, taskbar, Desktop shortcut, Start-menu shortcut, loading s
 
 Requirements: Windows 10 or later, .NET 10 SDK for building, and the Microsoft Edge WebView2 runtime for execution.
 
+For normal installation, download `GoogleTranslate-Setup-1.1.0-win-x64.exe` from the repository's [Releases](https://github.com/vahidpourreza/google-translate-desktop/releases) page. The per-user setup requires no administrator rights, installs under `%LOCALAPPDATA%\Programs\GoogleTranslate`, creates Start-menu and optional Desktop shortcuts, and can start the tray companion with Windows. The setup is not code-signed, so Windows may identify the publisher as unknown.
+
+To build the verified setup package locally:
+
+```powershell
+.\scripts\release.ps1
+```
+
+This requires the .NET 10 SDK and Inno Setup 6 on the build machine. The release script builds the app, runs code and live offscreen WebView tests, performs isolated install/uninstall validation, then emits the setup executable and SHA-256 file under `dist\installer`.
+
+For a developer build installed directly from the project:
+
 ```powershell
 .\scripts\publish.ps1
 .\scripts\install.ps1
